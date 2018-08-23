@@ -1,7 +1,7 @@
 # Physochlaina_orientalis
 Scripts used during the assembly and analysis of P. orientalis mitochondrial genome
 
-The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae Phyoschlaina orientalis. Script are more a combination of different programs than a program itself. So you need to check you have installed all pre-requisites in your path before running them. If you used them please cite: "XXX"  
+The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae Phyoschlaina orientalis. Scripts are more a combination of different programs than a program itself. So you need to check you have installed all pre-requisites in your path before running them. If you used them please cite: "XXX"  
 
 1- Calculate contig read depth
 
