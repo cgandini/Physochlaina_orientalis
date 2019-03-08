@@ -1,6 +1,6 @@
 # *Physochlaina orientalis*
 
-Scripts used during the assembly and analysis of *P. orientalis* mitochondrial genome
+##Scripts used during the assembly and analysis of *P. orientalis* mitochondrial genome##
 
 The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
 
@@ -8,7 +8,7 @@ For any doubts please write me to: gandini.carolin@gmail.com
 
 ### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
-**You will need to install and add to the PATH (used versions are within parenthesis):**
+**PRE-REQUISITES (used versions are within parenthesis):**
   
   - BWA (0.7.15-r1140): https://sourceforge.net/projects/bio-bwa/files/
   - samtools (1.4): https://sourceforge.net/projects/samtools/files/
@@ -20,7 +20,7 @@ For any doubts please write me to: gandini.carolin@gmail.com
 
   This script allows you to analyze multiple fasta files (.fa). Each species should be in a different file. If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
-  **You will need to install and add to the PATH (used versions are within parenthesis):**
+  **PRE-REQUISITES (used versions are within parenthesis):**
   
   - BLAST+ (2.7.1+): https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download
   - trf (4.09): https://tandem.bu.edu/trf/trf.download.html
