@@ -1,6 +1,6 @@
 # *Physochlaina orientalis*
 
-##Scripts used during the assembly and analysis of *P. orientalis* mitochondrial genome##
+## Scripts used during the assembly and analysis of *P. orientalis* mitochondrial genome ##
 
 The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
 
