@@ -2,11 +2,11 @@
 
 Scripts used during the assembly and analysis of *P. orientalis* mitochondrial genome
 
-The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae Phyoschlaina orientalis. Scripts are more a combination of different programs than a program itself. So you need to check if you have installed all pre-requisites in your path before running them. Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
+The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
 
 For any doubts please write me to: gandini.carolin@gmail.com
 
-### 1- Get a subset of reads and extend using SSAKE (deleting plastidial reads)
+### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
 **You will need to install and add to the PATH (used versions are within parenthesis):**
   
@@ -14,9 +14,9 @@ For any doubts please write me to: gandini.carolin@gmail.com
   - samtools (1.4): https://sourceforge.net/projects/samtools/files/
   - seqtk (1.2-r101-dirty): https://github.com/lh3/seqtk
   
-### 2- Get a subset of reads
+### 2- subset_reads.sh: Get a subset of reads
 
-### 3- Analyze repeats and repeats cluster using VSEARCH
+### 3- get_repeats.sh: Analyze repeats and repeats cluster using VSEARCH
 
   This script allows you to analyze multiple fasta files (.fa). Each species should be in a different file. If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
