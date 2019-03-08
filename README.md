@@ -18,7 +18,7 @@ For any doubts please write me to: gandini.carolin@gmail.com
   
 ### 2- subset_reads.sh: Get a subset of reads
 
-### 3- get_repeats.sh: Analyze repeats and repeats cluster using VSEARCH
+### 3- get_repeats.sh: Analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
   This script allows you to analyze multiple fasta files (.fa). Each species should be in a different file. If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
