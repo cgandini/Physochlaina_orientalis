@@ -26,8 +26,8 @@ For any doubts write to: gandini.carolin@gmail.com
   - mt4subse: mitochondrial contigs for the subset in fasta format, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
   - mt4extension: mitochondrial contigs for the extension in fasta format, all contigs with mitochondrial BLAST mitochondrial hits
   - cp: chloroplast genome or chloroplast contigs in fasta format
-  - read1: pair-end reads file 1
-  - read2: pair-end reads file 2
+  - reads1: pair-end reads file 1 in fastq format
+  - reads2: pair-end reads file 2 in fastq format
   - threads: number of threads to use
   - reads_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
 
@@ -59,8 +59,8 @@ This script allows you to get a subset of reads for any fasta or multifasta file
 **INPUTS:**
 
   - fasta: fasta or multifasta file for which you need the subset
-  - read1: pair-end reads file 1
-  - read2: pair-end reads file 2
+  - reads1: pair-end reads file 1 in fastq format
+  - reads2: pair-end reads file 2 in fastq format
   - threads: number of threads to use
 
 **Run in the terminal**
