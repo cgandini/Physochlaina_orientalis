@@ -23,25 +23,28 @@ For any doubts write to: gandini.carolin@gmail.com
   
   You should first create the following files (please see Materials and Methods of XXX for more information):
   
-  1. mt4subset.fa: mitochondrial contigs for the subset, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
-  2. mt4extension.fa: mitochondrial contigs for the extension, all contigs with mitochondrial BLAST mitochondrial hits
-  3. cp: chloroplast genome or chloroplast contigs
-
-```  
-mkdir [new folder]
-cd PATH/[new folder]
-PATH/extend_contigs.sh [mt4subset.fa] [mt4extension.fa] [cp] [complete PATH to reads1.fastq] [complete PATH to reads2.fastq] [# of threads to use] [complete PATH to SSAKE folder] [reads name format*]
-```
-
-*indicate the format of reads names within the fastq file: A, if pair reads are denoted as read_name/1 and read_name/2 or B, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
+  - mt4subse: mitochondrial contigs for the subset in fasta format, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
+  - mt4extension: mitochondrial contigs for the extension in fasta format, all contigs with mitochondrial BLAST mitochondrial hits
+  - cp: chloroplast genome or chloroplast contigs in fasta format
+  - read1: pair-end reads file 1
+  - read2: pair-end reads file 2
+  - threads: number of threads to use
+  - reads_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
 
 ```  
 head reads1.fastq
 ```
+**Run in the terminal**
+
+```  
+mkdir [extension folder]
+cd PATH/[extension folder]
+PATH/extend_contigs.sh PATH/mt4subset PATH/mt4extension PATH/cp PATH/reads1 PATH/reads2 threads reads_format
+```
 
 **OUTPUTS:**
 
-The file extended_contigs.fa will have the contigs after the extension process. 
+The file extended_contigs.fa contain contigs after the extension process. 
 
 ### 2- subset_reads.sh: Get a subset of reads
 
@@ -55,10 +58,10 @@ This script allows you to get a subset of reads for any fasta or multifasta file
 
 **INPUTS:**
 
-- fasta: fasta or multifasta file for which you need the subset
-- read1: pair-end reads file 1
-- read2: pair-end reads file 2
-- threads: number of threads to use
+  - fasta: fasta or multifasta file for which you need the subset
+  - read1: pair-end reads file 1
+  - read2: pair-end reads file 2
+  - threads: number of threads to use
 
 **Run in the terminal**
 
@@ -70,8 +73,8 @@ PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
 
 **OUTPUTS:**
 
-- fasta_name_subset_1.fq and fasta_name_subset_2.fq: subset of reads in fastq files 
-- fasta_name.bam: bam file of aligned reads
+  - fasta_name_subset_1.fq and fasta_name_subset_2.fq: subset of reads in fastq files 
+  - fasta_name.bam: bam file of aligned reads
 
 ### 3- get_repeats.sh: Analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
@@ -87,7 +90,9 @@ PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
   - bedtools (2.26.0): https://bedtools.readthedocs.io/en/latest/content/installation.html
   - bedops (2.4.35): https://bedops.readthedocs.io/en/latest/
   
-  **INPUTS:** you will need to create a folder with all fasta files to analyze (.fa extension). Then, you just run in the terminal
+  **INPUTS:** you will need to create a folder with all fasta files to analyze (.fa extension). Then, 
+  
+**Run in the terminal**
   
 ```  
 cd PATH/[folder with files]
