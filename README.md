@@ -1,6 +1,6 @@
 # *Physochlaina orientalis*
 
-## Scripts used during the assembly and analysis of the *P. orientalis* mitochondrial genome ##
+## Scripts used during the assembly and repeat analysis of the *P. orientalis* mitochondrial genome ##
 
   The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
   
@@ -8,7 +8,7 @@
 
 For any doubts write to: gandini.carolin@gmail.com
 
-### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
+### 1- extend_contigs.sh: get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
   This script allows you to extend contigs individually using a mitochondrial subset of reads. 
   
@@ -46,7 +46,7 @@ PATH/extend_contigs.sh PATH/mt4subset PATH/mt4extension PATH/cp PATH/reads1 PATH
 
 The file extended_contigs.fa contain contigs after the extension process. 
 
-### 2- subset_reads.sh: Get a subset of reads
+### 2- subset_reads.sh: get a subset of reads for any fasta file
 
 This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce memory consumption of other programs and therefore allows you to work easily in a conventional PC. 
 
@@ -76,7 +76,7 @@ PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
   - fasta_name_subset_1.fq and fasta_name_subset_2.fq: subset of reads in fastq files 
   - fasta_name.bam: bam file of aligned reads
 
-### 3- get_repeats.sh: Analyze repeats and short repeats (< 100 bp) families using VSEARCH
+### 3- get_repeats.sh: analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
   This script allows you to analyze multiple fasta files (.fa). Each species should be in a different file. If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
