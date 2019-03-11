@@ -6,29 +6,12 @@
   
    Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
 
-For any doubts write me to: gandini.carolin@gmail.com
+For any doubts write to: gandini.carolin@gmail.com
 
 ### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
-  This script allows you to extend contigs individually using a mitochondrial subset of reads. You should make a new folder and then run the script.
+  This script allows you to extend contigs individually using a mitochondrial subset of reads. 
   
-  You should first create the following files (please see Materials and Methods of XXX for more information):
-  
-  1. mt4subset.fa: mitochondrial contigs for subset, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
-  2. mt4extension.fa: mitochondrial contigs for extension, all contigs with mitochondrial BLAST mitochondrial hits
-  3. cp: chloroplast genome or chloroplast contigs
-  
-```  
-cd PATH/[new folder]
-PATH/extend_contigs.sh [mt4subset.fa] [mt4extension.fa] [cp] [reads1.fastq] [reads2.fastq] [# of threads to use] [PATH to SSAKE folder] [reads name format*]
-```
-
-*indicate the format of reads names within the fastq file: A, if pair reads are denoted as read_name/1 and read_name/2 or B, if pair reads are denotes as readname 1:N:0 and readname 2:N:0. You can check it by doing: 
-
-```  
-head reads1.fastq
-```
-
 **PRE-REQUISITES (used versions are within parenthesis):**
   
   - BWA (0.7.15-r1140): https://sourceforge.net/projects/bio-bwa/files/
@@ -36,7 +19,59 @@ head reads1.fastq
   - seqtk (1.2-r101-dirty): https://github.com/lh3/seqtk
   - SSAKE (3.8.5): http://www.bcgsc.ca/platform/bioinfo/software/ssake **do not add to PATH**
   
+**INPUTS:**
+  
+  You should first create the following files (please see Materials and Methods of XXX for more information):
+  
+  1. mt4subset.fa: mitochondrial contigs for the subset, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
+  2. mt4extension.fa: mitochondrial contigs for the extension, all contigs with mitochondrial BLAST mitochondrial hits
+  3. cp: chloroplast genome or chloroplast contigs
+
+```  
+mkdir [new folder]
+cd PATH/[new folder]
+PATH/extend_contigs.sh [mt4subset.fa] [mt4extension.fa] [cp] [complete PATH to reads1.fastq] [complete PATH to reads2.fastq] [# of threads to use] [complete PATH to SSAKE folder] [reads name format*]
+```
+
+*indicate the format of reads names within the fastq file: A, if pair reads are denoted as read_name/1 and read_name/2 or B, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
+
+```  
+head reads1.fastq
+```
+
+**OUTPUTS:**
+
+The file extended_contigs.fa will have the contigs after the extension process. 
+
 ### 2- subset_reads.sh: Get a subset of reads
+
+This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce memory consumption of other programs and therefore allows you to work easily in a conventional PC. 
+
+  **PRE-REQUISITES (used versions are within parenthesis):**
+  
+  - bowtie2 (2.2.2): http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+  - samtools (1.4): https://sourceforge.net/projects/samtools/files/
+  - seqtk (1.2-r101-dirty): https://github.com/lh3/seqtk
+
+**INPUTS:**
+
+- fasta: fasta or multifasta file for which you need the subset
+- read1: pair-end reads file 1
+- read2: pair-end reads file 2
+- threads: number of threads to use
+
+**Run in the terminal**
+
+```  
+mkdir [subset folder]
+cd PATH/[subset folder]
+PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
+```
+
+**OUTPUTS:**
+
+- fasta_name_subset_1.fq and fasta_name_subset_2.fq: subset of reads in fastq files 
+- fasta_name.bam: bam file of aligned reads
 
 ### 3- get_repeats.sh: Analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
