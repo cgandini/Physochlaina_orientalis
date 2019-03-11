@@ -10,11 +10,19 @@ For any doubts write me to: gandini.carolin@gmail.com
 
 ### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
+  This script allows you to extend contigs individually using a mitochondrial subset of reads. You should make a new folder and then run the script.
+  
+  ```  
+cd PATH/[new folder]
+PATH/extend_contigs.sh [mitochondrial contigs for subset] [mitochondrial contigs for extension] [chloroplast genome or chloroplast contigs] [reads in fastq file 1] [reads in fastq file 2] [# of threads to use] [PATH to SSAKE folder] [indicate the format of reads names within the fastq file: A, if pair reads are denoted as read_name/1 and read_name/1/2 or B, if pair reads are denotes as readname 1:N:0 and readname 2:N:0. You can check it by doing head read_file.fastq]
+```
+
 **PRE-REQUISITES (used versions are within parenthesis):**
   
   - BWA (0.7.15-r1140): https://sourceforge.net/projects/bio-bwa/files/
   - samtools (1.4): https://sourceforge.net/projects/samtools/files/
   - seqtk (1.2-r101-dirty): https://github.com/lh3/seqtk
+  - SSAKE (3.8.5): http://www.bcgsc.ca/platform/bioinfo/software/ssake **do not add to PATH**
   
 ### 2- subset_reads.sh: Get a subset of reads
 
