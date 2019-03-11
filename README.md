@@ -2,11 +2,11 @@
 
 ## Scripts used during the assembly and analysis of the *P. orientalis* mitochondrial genome ##
 
-  The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. 
+  The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
   
    Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
 
-For any doubts please write me to: gandini.carolin@gmail.com
+For any doubts write me to: gandini.carolin@gmail.com
 
 ### 1- extend_contigs.sh: Get a subset of reads and extend using SSAKE (deleting plastidial reads)
 
