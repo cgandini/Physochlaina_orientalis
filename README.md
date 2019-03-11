@@ -14,13 +14,13 @@ For any doubts write me to: gandini.carolin@gmail.com
   
   You should first create the following files (please see Materials and Methods of XXX for more information):
   
-  1. mt4subset.fa: mitochondrial contigs for subset: this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
-  2. mt4extension.fa: mitochondrial contigs for extension: all contigs with mitochondrial BLAST mitochondrial hits
+  1. mt4subset.fa: mitochondrial contigs for subset, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
+  2. mt4extension.fa: mitochondrial contigs for extension, all contigs with mitochondrial BLAST mitochondrial hits
   3. cp: chloroplast genome or chloroplast contigs
   
 ```  
 cd PATH/[new folder]
-PATH/extend_contigs.sh [mt4subset.fa] [mt4extension.fa] [cp] [reads1.fastq] [reads2.fastq] [# of threads to use] [PATH to SSAKE folder] [reads name format]
+PATH/extend_contigs.sh [mt4subset.fa] [mt4extension.fa] [cp] [reads1.fastq] [reads2.fastq] [# of threads to use] [PATH to SSAKE folder] [reads name format*]
 ```
 
 *indicate the format of reads names within the fastq file: A, if pair reads are denoted as read_name/1 and read_name/2 or B, if pair reads are denotes as readname 1:N:0 and readname 2:N:0. You can check it by doing: 
