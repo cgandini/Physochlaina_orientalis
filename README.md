@@ -2,7 +2,7 @@
 
 ## Scripts used during the assembly and repeat analysis of the *P. orientalis* mitochondrial genome ##
 
-  The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
+  The scripts here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
   
    Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: *"The Complete Organelle Genomes of Physochlaina orientalis: Insights into Short Sequence Repeats across Seed Plant Mitochondrial Genomes"*  
 
