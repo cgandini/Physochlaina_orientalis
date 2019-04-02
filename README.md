@@ -4,13 +4,17 @@
 
   The scripts posted here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
   
-   Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: "XXX"  
+   Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: *"The Complete Organelle Genomes of Physochlaina orientalis: Insights into Short Sequence Repeats across Seed Plant Mitochondrial Genomes"  
 
 For any doubts write to: gandini.carolin@gmail.com
 
-### 1- extend_contigs.sh: get a subset of reads and extend using SSAKE (deleting plastidial reads)
+### Installation
 
-  This script allows you to extend contigs individually using a mitochondrial subset of reads. 
+Just download the complete folder. Give permissions to all scripts within and add files to the bash profile. Then you can just run calling the script.
+
+### 1- extend_contigs_subtracting_reads.sh: get a subset of reads subtracting unwanted reads and extend using SSAKE
+
+  This script allows you to extend contigs individually by first subtract unwanted reads. 
   
 **PRE-REQUISITES (used versions are within parenthesis):**
   
@@ -21,15 +25,17 @@ For any doubts write to: gandini.carolin@gmail.com
   
 **INPUTS:**
   
-  You should first create the following files (please see Materials and Methods of XXX for more information):
+  You should first create the following files (please see Materials and Methods of *"The Complete Organelle Genomes of Physochlaina orientalis: Insights into Short Sequence Repeats across Seed Plant Mitochondrial Genomes"* for more information):
   
-  - mt4subse: mitochondrial contigs for the subset in fasta format, this should be all contigs with BLAST mitochondrial hits plus all contigs within the mitochondrial coverage.
-  - mt4extension: mitochondrial contigs for the extension in fasta format, all contigs with mitochondrial BLAST mitochondrial hits
-  - cp: chloroplast genome or chloroplast contigs in fasta format
+  - c1: reads mapping this fasta (or multifasta) file will be used to make the subset
+  - c2: contigs in this dasta file will be extended
+  - c3: reads mapping this fasta (or multifasta) file will be subtracted from the subset
   - reads1: pair-end reads file 1 in fastq format
   - reads2: pair-end reads file 2 in fastq format
   - threads: number of threads to use
-  - reads_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
+  - read_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
+  - PATH to SSAKE folder: complete path to SSAKE folder
+  - insert_size: indicate the insert size of paired-end reads
 
 ```  
 head reads1.fastq
@@ -39,13 +45,22 @@ head reads1.fastq
 ```  
 mkdir [extension folder]
 cd PATH/[extension folder]
-PATH/extend_contigs.sh PATH/mt4subset PATH/mt4extension PATH/cp PATH/reads1 PATH/reads2 threads reads_format
+PATH/extend_contigs.sh PATH/c1 PATH/c2 PATH/c3 PATH/reads1 PATH/reads2 threads read_format PATH/SSAKEfolder insert_size
 ```
 
 **OUTPUTS:**
 
-The file extended_contigs.fa contain contigs after the extension process. 
-
+You will find a folder named SSAKE_extension and within 2 folders:
+  
+  - subset
+    - mt_reads_mapped_titles_sorted.txt: names of reads mapping to the mitochondrial genome
+    - cp_reads_mapped_titles_sorted.txt: names of reads mapping to the chloroplast genome
+    - reads_mapped_titles.txt: names of reads after substraction of reads mapping the chloroplast genome
+    - subse4ssake_reads1.fq and subse4ssake_reads2.fq: subset of reads used for ssake extension
+    
+  - extension
+    - extended_contigs.fa: fasta file with contigs after the extension process
+    
 ### 2- subset_reads.sh: get a subset of reads for any fasta file
 
 This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce memory consumption of other programs and therefore allows you to work easily in a conventional PC. 
