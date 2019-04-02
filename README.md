@@ -8,11 +8,11 @@
 
 For any doubts write to: gandini.carolin@gmail.com
 
-### Installation
+## Installation
 
 Just download the complete folder. Give permissions to all scripts within and add files to the bash profile. Then you can just run calling the script.
 
-### 1- extend_contigs_subtracting_reads.sh: get a subset of reads subtracting unwanted reads and extend using SSAKE
+## 1- extend_contigs_subtracting_reads.sh: get a subset of reads subtracting unwanted reads and extend using SSAKE
 
   This script allows you to extend contigs individually by first subtract unwanted reads. 
   
@@ -33,19 +33,21 @@ Just download the complete folder. Give permissions to all scripts within and ad
   - reads1: pair-end reads file 1 in fastq format
   - reads2: pair-end reads file 2 in fastq format
   - threads: number of threads to use
-  - read_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if pair reads are denoted as read_name 1:N:0 and read_name 2:N:0. You can check it by doing: 
-  - PATH to SSAKE folder: complete path to SSAKE folder
-  - insert_size: indicate the insert size of paired-end reads
+  - read_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if not. You can check it by doing: 
 
 ```  
 head reads1.fastq
 ```
+
+  - insert_size: indicate the insert size of paired-end reads
+  - PATH to SSAKE folder: complete path to SSAKE folder
+
 **Run in the terminal**
 
 ```  
 mkdir [extension folder]
 cd PATH/[extension folder]
-PATH/extend_contigs.sh PATH/c1 PATH/c2 PATH/c3 PATH/reads1 PATH/reads2 threads read_format PATH/SSAKEfolder insert_size
+PATH/extend_contigs.sh PATH/c1 PATH/c2 PATH/c3 PATH/reads1 PATH/reads2 threads read_format insert_size PATH/SSAKEfolder
 ```
 
 **OUTPUTS:**
@@ -61,7 +63,7 @@ You will find a folder named SSAKE_extension and within 2 folders:
   - extension
     - extended_contigs.fa: fasta file with contigs after the extension process
     
-### 2- subset_reads.sh: get a subset of reads for any fasta file
+## 2- subset_reads.sh: get a subset of reads for any fasta or multifasta file
 
 This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce memory consumption of other programs and therefore allows you to work easily in a conventional PC. 
 
@@ -77,13 +79,18 @@ This script allows you to get a subset of reads for any fasta or multifasta file
   - reads1: pair-end reads file 1 in fastq format
   - reads2: pair-end reads file 2 in fastq format
   - threads: number of threads to use
+  - read_format: indicate the format of reads names within the fastq file: **A**, if pair reads are denoted as read_name/1 and read_name/2 or **B**, if not. You can check it by doing: 
+
+```  
+head reads1.fastq
+```
 
 **Run in the terminal**
 
 ```  
 mkdir [subset folder]
 cd PATH/[subset folder]
-PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
+PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads read_format
 ```
 
 **OUTPUTS:**
@@ -91,7 +98,7 @@ PATH/subset_reads.sh PATH/fasta PATH/reads1 PATH/reads2 threads
   - fasta_name_subset_1.fq and fasta_name_subset_2.fq: subset of reads in fastq files 
   - fasta_name.bam: bam file of aligned reads
 
-### 3- get_repeats.sh: analyze repeats and short repeats (< 100 bp) families using VSEARCH
+## 3- get_repeats.sh: analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
   This script allows you to analyze multiple fasta files (.fa). Each species should be in a different file. If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
