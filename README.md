@@ -4,9 +4,9 @@
 
   The scripts here were used to analyze the mitochondrial genome of the Solanaceae *Phyoschlaina orientalis*. Scripts are more a combination of different programs than a program itself. So you need to check out if you have installed all pre-requisites in your path before running them. All scripts are made in bash and tested in mac OS, so there is no warranty they worked correctly on Linux. Nonetheless, they should work with minimal changes. 
   
-   Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: *"The Complete Organelle Genomes of Physochlaina orientalis: Insights into Short Sequence Repeats across Seed Plant Mitochondrial Genomes"*  
+   Please be noticed that I am not a professional bioinformatic, and therefore these scripts are extremally "home-made". However, they do the job. If you used them please cite: *"The Complete Organelle Genomes of Physochlaina orientalis: Insights into Short Sequence Repeats across Seed Plant Mitochondrial Genomes", C.L. Gandini et al., Molecular Phylogenetics and Evolution, 2019, doi 10.1016/j.ympev.2019.05.012*  
 
-For any doubts write to: gandini.carolin@gmail.com
+For any doubts write to gandini.carolin@gmail.com
 
 ## Installation
 
@@ -61,7 +61,7 @@ You will 2 folders:
   - subset
     - mt_reads_mapped_titles_sorted.txt: names of reads mapping to the mitochondrial genome
     - cp_reads_mapped_titles_sorted.txt: names of reads mapping to the chloroplast genome
-    - reads_mapped_titles.txt: names of reads after substraction of reads mapping the chloroplast genome
+    - reads_mapped_titles.txt: names of reads after subtraction of reads mapping the chloroplast genome
     - subse4ssake_reads1.fq and subse4ssake_reads2.fq: subset of reads used for ssake extension
     
   - extension
@@ -70,7 +70,7 @@ You will 2 folders:
 
 ## 2- extend_contigs_withsubset.sh
 
-This script is similar to the previous one, however, no substraction is done. 
+This script is similar to the previous one, however, no subtraction is done. 
 
 **Run in the terminal**
 
@@ -86,7 +86,7 @@ PATH/extend_contigs_withsubset.sh -h
     
 ## 3- subset_reads_bowtie.sh: get a subset of reads for any fasta or multifasta file
 
-This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce memory consumption of other programs (as for example Consed) and therefore allows you to work easily in a conventional PC. 
+This script allows you to get a subset of reads for any fasta or multifasta file. This is useful to reduce the memory consumption of other programs (as for example Consed) and therefore allows you to work easily in a conventional PC. 
 
   **PRE-REQUISITES (used versions are within parenthesis):**
   
@@ -122,7 +122,7 @@ PATH/subset_reads_bowtie.sh -h
 ## 4- get_repeats.sh: analyze repeats and short repeats (< 100 bp) families using VSEARCH
 
   This script reports genome content of all repeat types, defined as tandem repeats (TR), short repeats (SR: < 100 bp), intermediate repeats (IntR/IR: 100-1000 bp) and large repeats (LR: > 1000bp). In addition, a clustering/family analysis of SR is done using the algorithm included in the VSEARCH tool. 
-  This script allows you to analyze multiple species. However, each species should be in a different fasta file (.fa or .fasta). If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
+  This script allows you to analyze multiple species. However, each species should be in a different fasta file (**please use .fa extension**). If the species have 2 or more chromosomes (or scaffolds), these should be placed in a multifasta file.  
   
   **PRE-REQUISITES (used versions are within parenthesis):**
   
@@ -138,9 +138,9 @@ PATH/subset_reads_bowtie.sh -h
   **INPUTS:** you will need to create a folder with all fasta files to analyze. Then, indicate:
   
   - threads: number of threads to use
-  - mincluster: minumun number of sequences in a cluster to re-cluster [integer]
-  - getal: get aligments using mafft? [Y or N]
-  - clusterall: cluster all analyzed species? [Y or N], usefull if you have more than one species
+  - mincluster: minumum number of sequences in a cluster to re-cluster [integer]
+  - getal: get alignments using mafft? [Y or N]
+  - clusterall: cluster all analyzed species? [Y or N], useful if you have more than one species
   
 **Run in the terminal**
   
@@ -148,24 +148,29 @@ PATH/subset_reads_bowtie.sh -h
 cd PATH/[folder with fasta files]
 PATH/get_repeats.sh -h
 
-"cd to folder with genomes in fasta files. Each genome should be in individual files. If a genome is composed by 2 or more chromosomes/scaffolds should be placed in a multifasta file
+"cd to folder with genomes in fasta files. Each genome should be in individual files. If a genome is composed of 2 or more chromosomes/scaffolds should be placed in a multifasta file
 
 Usage: get_repeats.sh [# of threads to use] [minimum number of sequences in a cluster to re-cluster] [get alignments? Y or N] [cluster all? Y or N]"
 ```
 
-  **OUTPUTS:** for each fasta a folder will be created. Within you will find:
+  **OUTPUTS:** 
+  
+For each species, a folder will be created. Within you will find:
 
   * chr folder: with BLAST and Tandem Repeat Finder results
   * clusters_SR folder: with short repeat (<100 bp) clustering analysis
   * repeats_stats.txt: resume of all types of repeats and clustering analysis (including genome coverages)
-  * BED files for (remember that in BED files start coords start at 0). Names for each repeat represent the start from repeat pair 1 and the start from repeat pair 2:
-      * all_coords: all repeats
-      * LR_coords: large repeats
-      * IR_coords: intermediate repeats
-      * SR_coords: short repeats
-      * SR_with_cluster: short repeats with cluster name in which was assigned
-      * TR_coords: tandem repeats
+  * BED files for all repeats types (remember that in BED files start at 0). Names for each repeat represent the start from repeat pair 1 and the start from repeat pair 2.
       
-      
- * repeat_table.txt: a resume table of all analyzed species
+You will also find a resume table for all analyzed species (repeat_table.txt). 
+ 
+If you indicate to cluster SR between species, you will also find a folder named clusterall and within:
+ 
+  * combinations_all.txt
+  * combinations_interspecies.txt
+  * combinations_intraspecies.txt
+  * cluster_heatmap.pdf
+  
+
+ 
     
