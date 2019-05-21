@@ -10,7 +10,7 @@ For any doubts write to gandini.carolin@gmail.com
 
 ## Installation
 
-Just download the complete folder. Give permissions to all scripts within and add files to the bash profile. Then you can just run calling the script.
+Just download the folder scripts_porientalis. Give permissions to all scripts within (chmod +x *) and add files to the bash profile (export PATH="/yourpath/scripts_porientalis:$PATH"). Then you can just run calling the script name.
 
 ## 1- extend_contigs_subtracting_reads.sh: get a subset of reads subtracting unwanted reads and extend using SSAKE
 
