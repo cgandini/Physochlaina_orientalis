@@ -93,7 +93,7 @@ done
 cd ..
 
 name=$(head -1 genome.fa | perl -pe 's/>//g')
-length=$(seqkit fx2tab --length genome.fa --name --only-id | cut -f 4 | awk '{sum += $1} END {print sum}')
+length=$(seqkit fx2tab --length genome.fa --name --only-id | awk '{sum += $2} END {print sum}')
 
 cat ./chr/*_blast.txt > repeats_blast.txt
 cat ./chr/*_TR_coords.bed | sort -u -k1,1 -k2,2n | awk -v OFS='\t' '{if($2) print $1,$2-1,$3,"TR";}' > TR_coords.bed
@@ -223,7 +223,7 @@ echo -e "\n######## genome length ########\n" > repeats_stats.txt
 
 echo -e "${PWD##*/}" >> repeats_stats.txt
 echo -e "chromosomes/scaffolds: $(grep ">" genome.fa | wc -l)" >> repeats_stats.txt
-echo -e "total (bp):\t$(seqkit fx2tab --length genome.fa --name --only-id | cut -f 4 | awk '{sum += $1} END {print sum}')"  >> repeats_stats.txt
+echo -e "total (bp):\t$(seqkit fx2tab --length genome.fa --name --only-id | awk '{sum += $2} END {print sum}')"  >> repeats_stats.txt
 
 rm genome.*
 
