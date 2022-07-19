@@ -86,7 +86,14 @@ blastn -word_size 7 -ungapped -perc_identity 80 -evalue 0.001 -query $f -db ../g
 name=$(head -1 $f | perl -pe 's/>//g')
 
 trf $f 2 7 7 80 10 50 2000 -h -m -d
-tail +16 "${f}".2.7.7.80.10.50.2000.dat | awk -v OFS='\t' -v var="${name}" '{print var,$1,$2}' > "${name}"_TR_coords.bed
+
+cat *.dat | while read line; do
+	if [[ "$line" =~ ^Sequence.* ]]; then
+		chr=$(echo $line | perl -pe 's/Sequence: //g') 
+  elif [[ "$line"  =~ ^[0-9] ]]; then
+  	 echo $chr $line >> TR_coords.tmp
+  fi
+ done
 
 done
 
@@ -96,7 +103,8 @@ name=$(head -1 genome.fa | perl -pe 's/>//g')
 length=$(seqkit fx2tab --length genome.fa --name --only-id | awk '{sum += $2} END {print sum}')
 
 cat ./chr/*_blast.txt > repeats_blast.txt
-cat ./chr/*_TR_coords.bed | sort -u -k1,1 -k2,2n | awk -v OFS='\t' '{if($2) print $1,$2-1,$3,"TR";}' > TR_coords.bed
+cat ./chr/TR_coords.tmp | cut -f1-3 -d ' ' | perl -pe 's/ /\t/g' > TR_coords.bed
+rm ./chr/TR_coords.tmp
 
 awk -v OFS='\t' '{if($3<$4) print $0; else print $1,$2,$4,$3,$5,$6,$7,$8,$9,$10,$11,$12,$13}' repeats_blast.txt | awk -v OFS='\t' '{if($1<$3) print $0; else print $3,$4,$1,$2,$5,$6,$7,$8,$9,$10,$11,$13,$12}' | sort -k1,1n | awk '!seen[$1,$2,$3,$4,$5,$12,$13]++' | awk '{if($11<100) print $0}' | awk '{if(!($1==$3 && $2==$4)) print $0}' > repeats_blast.sorted.txt
 
